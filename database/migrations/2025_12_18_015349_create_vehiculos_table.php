@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('vehiculos', function (Blueprint $table) {
             $table->id();
+            $table->string('placa',10);
+            $table->string('tipo',20);
+            $table->string('propietario',100)->nullable();
+            $table->text('observaciones')->nullable();
+            $table->date('salida')->nullable();
             $table->timestamps();
         });
     }

@@ -12,7 +12,8 @@ class VehiculoController extends Controller
      */
     public function index()
     {
-        //
+        $vehiculos=Vehiculo::getVehiculos();
+        return view('vehiculos.index',compact('vehiculos'));
     }
 
     /**
@@ -20,7 +21,7 @@ class VehiculoController extends Controller
      */
     public function create()
     {
-        //
+        return view('vehiculos.create');
     }
 
     /**
@@ -28,31 +29,45 @@ class VehiculoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'placa' => 'required|max:10',
+            'tipo' => 'required',
+        ]);
+
+        Vehiculo::create($request->all());
+
+        return redirect()->route('vehiculos.index')
+            ->with('success','Vehiculo registrado');
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Vehiculo $vehiculo)
-    {
-        //
+    public function edit(Vehiculo $vehiculo){
+        return view('vehiculos.edit',compact('vehiculo'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Vehiculo $vehiculo)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Vehiculo $vehiculo)
     {
-        //
+        $request->validate([
+            'placa' => 'required|max:10',
+            'tipo' => 'required',
+        ]);
+
+        $vehiculo->update($request->all());
+
+        return redirect()->route('vehiculos.index')
+            ->with('success','Vehiculo actualizado');
     }
 
     /**
@@ -60,6 +75,9 @@ class VehiculoController extends Controller
      */
     public function destroy(Vehiculo $vehiculo)
     {
-        //
+        $vehiculo->update(['salida'=>now()]);
+
+        return redirect()->route('vehiculos.index')
+            ->with('success','Salida registrada');
     }
 }
