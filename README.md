@@ -3,15 +3,18 @@ Decisiones de Diseño
 1) Tabla  
 Nombre de la tabla: “vehículos”  
 
-Campo | Tipo | Opcional  
-Id | BIGINT | No  
-Placa | Varchar | No  
-Tipo | Varchar | No  
-Propietario | Varchar | Si  
-Observaciones | Text | Si  
-Salida | Date | Si  
-Created_at | Timestamp | No  
-Updated_at | Timestamp | No  
+## Estructura de la Tabla
+
+| Campo | Tipo | Opcional |
+|------|------|----------|
+| Id | BIGINT | No |
+| Placa | Varchar | No |
+| Tipo | Varchar | No |
+| Propietario | Varchar | Si |
+| Observaciones | Text | Si |
+| Salida | Date | Si |
+| Created_at | Timestamp | No |
+| Updated_at | Timestamp | No |
 
 2) Tipos de vehículo  
 - Automóvil  
